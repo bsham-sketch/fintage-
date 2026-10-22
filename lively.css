@@ -35,6 +35,14 @@
 .about-traveler { stroke-dasharray: .025 .975; stroke-dashoffset: 1; animation: route-travel 6s 2.5s linear infinite; }
 .about-node { transform-box: fill-box; transform-origin: center; animation: node-glow 3.2s ease-in-out infinite; animation-delay: calc(var(--i)*.8s); }
 .about-ripple { fill: none; stroke: #E8B965; stroke-width: 1.6; transform-box: fill-box; transform-origin: center; animation: node-ripple 3.2s ease-out infinite; animation-delay: calc(var(--i)*.8s); }
+.fd-route { fill: none; stroke: #E8B965; stroke-width: 2; stroke-linecap: round; stroke-dasharray: .08 .92; animation: giving-flow 5s linear infinite; animation-delay: calc(var(--i)*-.42s); opacity: .8; }
+.fd-node { fill: #E8B965; transform-box: fill-box; transform-origin: center; animation: giving-node 4.5s ease-in-out infinite; animation-delay: calc(var(--i)*.22s); }
+.fd-halo { fill: none; stroke: rgba(232,185,101,.7); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: giving-halo 4s ease-out infinite; }
+.fd-core { fill: #E8B965; transform-box: fill-box; transform-origin: center; animation: giving-core 3s ease-in-out infinite; }
+@keyframes giving-flow { to { stroke-dashoffset: -1; } }
+@keyframes giving-node { 0%,100% { opacity: .45; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.35); } }
+@keyframes giving-halo { 0% { transform: scale(.72); opacity: .8; } 100% { transform: scale(1.45); opacity: 0; } }
+@keyframes giving-core { 50% { transform: scale(1.2); filter: drop-shadow(0 0 8px rgba(232,185,101,.7)); } }
 @keyframes route-draw { to { stroke-dashoffset: 0; } }
 @keyframes route-travel { to { stroke-dashoffset: -1; } }
 @keyframes node-glow { 50% { transform: scale(1.35); filter: drop-shadow(0 0 6px rgba(232,185,101,.75)); } }
@@ -48,7 +56,7 @@ header { position: relative; z-index: 5; }
 .panel:hover:before { opacity: 1; }
 @media (max-width:780px) { .hero2 h1 { background-size: 320% 100%; } }
 @media (prefers-reduced-motion:reduce) {
-  .hero2 h1, .rings, .cb, .dr, .pu, .orb, .fl, .vl, .rp, .lf, .wv, .about-route, .about-traveler, .about-node, .about-ripple { animation: none !important; }
+  .hero2 h1, .rings, .cb, .dr, .pu, .orb, .fl, .vl, .rp, .lf, .wv, .about-route, .about-traveler, .about-node, .about-ripple, .fd-route, .fd-node, .fd-halo, .fd-core { animation: none !important; }
   .about-route { stroke-dashoffset: 0; }
   .about-traveler { display: none; }
   .cb { transform: scaleY(1); opacity: 1; }

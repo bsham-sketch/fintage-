@@ -11,7 +11,23 @@ document.addEventListener("DOMContentLoaded",()=>{
  S.legacy=()=>{const p=["M600 240 C600 205 598 175 600 135","M600 160 C570 150 540 135 505 95","M600 160 C630 150 662 135 698 95","M600 135 C592 110 590 85 575 45","M600 135 C610 110 614 85 630 45","M505 95 C490 85 470 80 445 60","M698 95 C712 85 735 80 758 60","M505 95 C500 75 495 65 480 40","M698 95 C702 75 710 62 724 38"],l=[[445,60],[480,40],[575,45],[630,45],[724,38],[758,60]];
   return `<circle class="rp" cx="600" cy="240" r="90" style="--i:0"/><circle class="rp" cx="600" cy="240" r="90" style="--i:1"/><circle class="rp" cx="600" cy="240" r="90" style="--i:2"/>`+p.map((v,i)=>`<path class="dr" pathLength="1" d="${v}" fill="none" stroke="${G}" stroke-width="${i?2.5:4}" stroke-linecap="round" style="--i:${i}"/>`).join("")+l.map(([a,b],i)=>`<circle class="lf" cx="${a}" cy="${b}" r="9" fill="${G}" style="--i:${i+5}"/>`).join("")};
  S.approach=()=>N(9).map(i=>`<line class="vl" x1="900" y1="120" x2="0" y2="${-30+i*35}" style="--i:${i}"/>`).join("")+N(3).map(i=>`<circle class="tv" cx="0" cy="0" r="7" fill="${G}" style="animation-delay:${i*2}s"/>`).join("")+`<circle class="rp" cx="900" cy="120" r="50" style="--i:0"/><circle class="pu" cx="900" cy="120" r="9" fill="${G}"/>`;
- S.foundation=()=>S.legacy();
+ S.foundation=()=>{
+  const routes=[
+   "M600 120 C520 100 430 65 330 38",
+   "M600 120 C555 90 520 52 485 24",
+   "M600 120 C600 82 600 48 600 18",
+   "M600 120 C645 90 680 52 715 24",
+   "M600 120 C680 100 770 65 870 38",
+   "M600 120 C530 145 450 178 365 210",
+   "M600 120 C565 155 540 185 510 220",
+   "M600 120 C635 155 660 185 690 220",
+   "M600 120 C670 145 750 178 835 210"
+  ];
+  const nodes=[[330,38],[485,24],[600,18],[715,24],[870,38],[365,210],[510,220],[690,220],[835,210]];
+  return `<circle class="fd-halo" cx="600" cy="120" r="74"/><circle class="fd-core" cx="600" cy="120" r="25"/>`+
+   routes.map((path,i)=>`<path class="fd-route" pathLength="1" d="${path}" style="--i:${i}"/>`).join("")+
+   nodes.map(([x,y],i)=>`<circle class="fd-node" cx="${x}" cy="${y}" r="7" style="--i:${i}"/>`).join("");
+ };
  S.about=()=>{
   const nodes=[[150,160],[450,80],[750,160],[1050,80]];
   const route=`M${nodes[0][0]} ${nodes[0][1]} C260 160 340 80 ${nodes[1][0]} ${nodes[1][1]} S640 160 ${nodes[2][0]} ${nodes[2][1]} S940 80 ${nodes[3][0]} ${nodes[3][1]}`;
