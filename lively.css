@@ -1,0 +1,56 @@
+/* Page-specific animated artwork and the ambient FINTAGE network. */
+.hero:before, .hero:after { display: block; }
+.hero:before { content: "F"; }
+.hero:after { filter: drop-shadow(0 0 3px rgba(184,139,79,.2)); }
+.hero2 { isolation: isolate; }
+.hero2 h1 { background: linear-gradient(100deg,#0B2F28 28%,#B88B4F 50%,#0B2F28 72%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: title-shine 8s linear infinite; }
+@keyframes title-shine { to { background-position: -260% 0; } }
+.rings { filter: drop-shadow(0 0 5px rgba(184,139,79,.3)); animation: idle-turn 70s linear infinite; }
+.rings circle { stroke: #B88B4F; stroke-width: 2; }
+@keyframes idle-turn { to { rotate: 360deg; } }
+.rule { box-shadow: 0 0 8px rgba(184,139,79,.3); }
+.scene { border-block: 1px solid #B88B4F; }
+.mq { background: var(--green); border-block: 1px solid #B88B4F; }
+.mq span { color: var(--ivory); }
+.mq span:nth-child(even) { color: #E8B965; }
+.mq span:after { content: "\2726"; margin-left: 34px; color: #E8B965; font: 14px Lato,sans-serif; vertical-align: middle; }
+.cb { transform-box: fill-box; transform-origin: 50% 100%; animation: bar-grow 5s cubic-bezier(.2,.7,.2,1) infinite; animation-delay: calc(var(--i)*.16s); }
+@keyframes bar-grow { 0% { transform: scaleY(0); opacity: 1; } 35%,88% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+.dr { stroke-dasharray: 1; stroke-dashoffset: 1; animation: line-trace 7s ease-in-out infinite; animation-delay: calc(var(--i)*.22s); }
+@keyframes line-trace { 0% { stroke-dashoffset: 1; opacity: 1; } 45%,85% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+.pu { transform-box: fill-box; transform-origin: center; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 50% { transform: scale(1.45); opacity: .55; } }
+.orb { transform-origin: 600px 120px; animation: spin linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.fl, .vl { stroke: #E8B965; stroke-width: 1.5; stroke-dasharray: 6 12; animation: dash-flow 1.2s linear infinite; }
+.vl { stroke-dasharray: 8 14; animation-delay: calc(var(--i)*-.15s); }
+@keyframes dash-flow { to { stroke-dashoffset: -18; } }
+.rp { fill: none; stroke: #E8B965; stroke-width: 1.6; transform-box: fill-box; transform-origin: center; animation: ripple 4.5s ease-out infinite; animation-delay: calc(var(--i)*1.2s); }
+@keyframes ripple { 0% { transform: scale(.15); opacity: 0; } 15% { opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
+.lf { transform-box: fill-box; transform-origin: center; animation: legacy-node 7s infinite; animation-delay: calc(var(--i)*.22s); }
+@keyframes legacy-node { 0%,40% { transform: scale(0); opacity: 1; } 55% { transform: scale(1.5); } 62%,85% { transform: scale(1); opacity: 1; } 100% { opacity: 0; } }
+.wv { animation: wave 12s linear infinite; }
+@keyframes wave { to { transform: translateX(-691px); } }
+.about-route { stroke-dasharray: 1; stroke-dashoffset: 1; animation: route-draw 2.4s .2s ease-out forwards; opacity: .55; }
+.about-traveler { stroke-dasharray: .025 .975; stroke-dashoffset: 1; animation: route-travel 6s 2.5s linear infinite; }
+.about-node { transform-box: fill-box; transform-origin: center; animation: node-glow 3.2s ease-in-out infinite; animation-delay: calc(var(--i)*.8s); }
+.about-ripple { fill: none; stroke: #E8B965; stroke-width: 1.6; transform-box: fill-box; transform-origin: center; animation: node-ripple 3.2s ease-out infinite; animation-delay: calc(var(--i)*.8s); }
+@keyframes route-draw { to { stroke-dashoffset: 0; } }
+@keyframes route-travel { to { stroke-dashoffset: -1; } }
+@keyframes node-glow { 50% { transform: scale(1.35); filter: drop-shadow(0 0 6px rgba(232,185,101,.75)); } }
+@keyframes node-ripple { 0% { transform: scale(.7); opacity: .8; } 100% { transform: scale(3); opacity: 0; } }
+.prog { box-shadow: 0 0 7px rgba(184,139,79,.6); }
+#bg { position: fixed; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; }
+main, footer { position: relative; z-index: 1; }
+header { position: relative; z-index: 5; }
+.panel { isolation: isolate; }
+.panel:before { content: ""; position: absolute; z-index: -1; inset: 0; background: radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(232,185,101,.17),transparent 62%); opacity: 0; transition: opacity .4s; }
+.panel:hover:before { opacity: 1; }
+@media (max-width:780px) { .hero2 h1 { background-size: 320% 100%; } }
+@media (prefers-reduced-motion:reduce) {
+  .hero2 h1, .rings, .cb, .dr, .pu, .orb, .fl, .vl, .rp, .lf, .wv, .about-route, .about-traveler, .about-node, .about-ripple { animation: none !important; }
+  .about-route { stroke-dashoffset: 0; }
+  .about-traveler { display: none; }
+  .cb { transform: scaleY(1); opacity: 1; }
+  .dr { stroke-dashoffset: 0; opacity: 1; }
+}
