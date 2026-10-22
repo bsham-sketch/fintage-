@@ -1,0 +1,68 @@
+/* Fintage enhancement layer: load after styles.css */
+.prog{position:fixed;top:0;left:0;right:0;height:2px;background:var(--au);transform:scaleX(0);transform-origin:0 50%;z-index:50}
+.hero:before,.hero:after{display:none}
+.hero{min-height:min(92vh,900px)}
+.rings{position:absolute;right:-6vw;top:50%;width:min(58vw,700px);height:auto;transform:translateY(-50%) rotate(var(--rt,0deg)) scale(var(--sc,1));pointer-events:none;z-index:0;overflow:visible}
+.rings circle{fill:none;stroke:var(--au);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.6s cubic-bezier(.2,.7,.2,1)}
+.rings.on circle{stroke-dashoffset:0}
+.rings .core{fill:var(--au);stroke:none;opacity:0;transition:opacity 1s 2.4s}.rings.on .core{opacity:.8}
+h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em}
+h1 .w>span{display:inline-block;transform:translateY(112%);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.25s + var(--i)*.14s)}
+@keyframes rise{to{transform:none}}
+.mq{overflow:hidden;border-block:1px solid var(--ln);padding:18px 0;margin-top:20px;white-space:nowrap}
+.mq div{display:inline-flex;animation:mq 38s linear infinite}
+.mq span{font:italic 30px "Playfair Display",Georgia,serif;color:var(--g);padding-right:44px}.mq span:nth-child(even){color:var(--au)}
+@keyframes mq{to{transform:translateX(-50%)}}.mq:hover div{animation-play-state:paused}
+.sec{padding-top:90px}.sec h2{font-size:clamp(28px,4vw,48px);line-height:1.2;max-width:760px;margin-bottom:12px}
+.horizon{position:relative;--p:0;margin-top:50px}
+.horizon .track{position:absolute;left:28px;right:28px;top:7px;height:1px;background:var(--ln)}
+.horizon .track i{display:block;height:3px;margin-top:-1px;background:var(--au);width:calc(var(--p)*100%)}
+.stops{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stop{position:relative;padding-top:42px;opacity:.38;transition:opacity .6s}.stop.lit{opacity:1}
+.stop:before{content:"";position:absolute;top:0;left:0;width:15px;height:15px;border-radius:50%;border:1px solid var(--au);background:var(--paper);transition:background .5s,transform .5s}
+.stop.lit:before{background:var(--au);transform:scale(1.25)}
+.stop h3{font-size:24px;margin-bottom:8px}.stop p{margin:0;font-size:16px}
+.rail{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x proximity;cursor:grab;scrollbar-width:none;padding-bottom:6px;margin-top:40px}
+.rail::-webkit-scrollbar{display:none}.rail.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.rail>*{flex:0 0 min(82vw,420px);scroll-snap-align:start}
+.grid.rail{display:flex;gap:0}.grid.rail .cell{padding:30px 34px 30px 0}
+.panel{background:var(--g);color:var(--iv);padding:44px 38px;min-height:440px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.panel:after{content:"";position:absolute;width:300px;aspect-ratio:1;right:-130px;bottom:-130px;border:1px solid rgba(184,139,79,.4);border-radius:50%;box-shadow:0 0 0 28px rgba(184,139,79,.07),0 0 0 56px rgba(184,139,79,.05)}
+.panel .tag{margin-bottom:auto}.panel h2{color:var(--iv);font-size:34px;margin:60px 0 14px;line-height:1.2}.panel p{margin:0 0 22px;color:rgba(247,244,236,.86);font-size:16px}
+.panel .lnk{color:var(--iv);align-self:flex-start;position:relative;z-index:1}
+.hint{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--au);margin-top:18px;margin-bottom:0}
+.faq{border-top:1px solid var(--ln);margin-top:36px}
+details{border-bottom:1px solid var(--ln)}summary{list-style:none;cursor:pointer;padding:26px 0;font:26px "Playfair Display",Georgia,serif;color:var(--g);display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}summary:after{content:"+";color:var(--au);transition:transform .35s}details[open] summary:after{transform:rotate(45deg)}
+details p{margin:0 0 28px;max-width:640px}
+@media(max-width:780px){.stops{grid-template-columns:1fr}.horizon .track{left:7px;right:auto;top:0;bottom:0;width:1px;height:auto}.horizon .track i{width:3px;height:calc(var(--p)*100%);margin:0 0 0 -1px}.stop{padding:0 0 28px 40px}.rings{opacity:.55;right:-40vw;width:100vw}.sec{padding-top:60px}}
+@media(prefers-reduced-motion:reduce){h1 .w>span{animation:none;transform:none}.mq div{animation:none}.rings circle{stroke-dashoffset:0;transition:none}.rings .core{opacity:.8;transition:none}.prog{display:none}}
+/* Scenes, seamless marquee, brighter rings */
+.scene{background:var(--g);height:clamp(190px,24vw,270px);overflow:hidden;margin-top:30px}
+.scene svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 5px rgba(232,185,101,.55))}
+.mq{background:var(--g);border:0;padding:22px 0}.mq div{animation:none;display:flex}
+.mq .mt{width:max-content;animation:mq2 34s linear infinite}.mq .g{flex:0 0 auto;min-width:100vw;justify-content:space-around}
+.mq span{color:var(--iv);padding:0 22px;font-size:32px}.mq span:nth-child(even){color:#E8B965}
+.mq span:after{content:"✦";font:16px Lato,sans-serif;color:#E8B965;margin-left:44px;vertical-align:middle}
+@keyframes mq2{to{transform:translateX(-50%)}}
+.cb{transform-box:fill-box;transform-origin:50% 100%;animation:grow 5s cubic-bezier(.2,.7,.2,1) infinite;animation-delay:calc(var(--i)*.16s)}
+@keyframes grow{0%{transform:scaleY(0);opacity:1}35%,88%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+.dr{stroke-dasharray:1;stroke-dashoffset:1;animation:drl 7s ease-in-out infinite;animation-delay:calc(var(--i)*.22s)}
+@keyframes drl{0%{stroke-dashoffset:1;opacity:1}45%,85%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+.pu{transform-box:fill-box;transform-origin:center;animation:pu 2s ease-in-out infinite}@keyframes pu{50%{transform:scale(1.6);opacity:.55}}
+.orb{transform-origin:600px 120px;animation:spin linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.fl,.vl{stroke:#E8B965;stroke-width:1.6;stroke-dasharray:6 12;animation:dsh 1.2s linear infinite}.vl{stroke-dasharray:8 14;animation-delay:calc(var(--i)*-.15s)}
+@keyframes dsh{to{stroke-dashoffset:-18}}
+.rp{fill:none;stroke:#E8B965;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:rp 4.5s ease-out infinite;animation-delay:calc(var(--i)*1.2s)}
+@keyframes rp{0%{transform:scale(.15);opacity:0}15%{opacity:1}100%{transform:scale(3);opacity:0}}
+.lf{transform-box:fill-box;transform-origin:center;animation:lf 7s infinite;animation-delay:calc(var(--i)*.22s)}
+@keyframes lf{0%,40%{transform:scale(0);opacity:1}55%{transform:scale(1.5)}62%,85%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+.tv{offset-path:path("M0 120 L900 120");animation:tv 6s linear infinite}
+@keyframes tv{0%{offset-distance:0%;opacity:0}10%,90%{opacity:1}100%{offset-distance:100%;opacity:0}}
+.wv{animation:wv linear infinite}@keyframes wv{to{transform:translateX(-691px)}}
+.rings circle{stroke:#C48A3A;stroke-width:2.2}.rings circle[style*="opacity"]{opacity:1!important}
+.rings{filter:drop-shadow(0 0 6px rgba(196,138,58,.5));animation:idle 70s linear infinite}@keyframes idle{to{rotate:360deg}}
+.panel>*{position:relative;z-index:1}
+.panel:before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(232,185,101,.25),transparent 60%);opacity:0;transition:opacity .4s}.panel:hover:before{opacity:1}
+.btn{will-change:transform}
+@media(prefers-reduced-motion:reduce){.scene *,.mq .mt,.rings{animation:none!important}}
