@@ -28,7 +28,7 @@ nav .ct { padding: 7px 16px; border: 1px solid var(--green); color: var(--green)
 .view { display: none; }
 .view.on { display: block; }
 .eb { margin: 0 0 18px; color: var(--gold); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; }
-.hero { display: flex; min-height: min(72vh, 720px); align-items: center; padding: 64px 0; }
+.hero { display: flex; min-height: min(62vh, 620px); align-items: center; padding: 48px 0; }
 .hero2 { max-width: 980px; margin: 0 auto; padding: 72px 28px 36px; }
 h1 { max-width: 900px; font-size: clamp(36px, 5vw, 60px); line-height: 1.12; }
 h1.big { font-size: clamp(56px, 9vw, 100px); line-height: 1; letter-spacing: -.035em; }

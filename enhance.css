@@ -5,7 +5,7 @@
 .hero:after { z-index: 0; width: min(48vw,590px); aspect-ratio: 1; right: 3%; top: 50%; transform: translateY(-50%); border: 1px solid rgba(184,139,79,.28); border-radius: 50%; background: radial-gradient(circle at center,rgba(184,139,79,.09) 0 1px,transparent 2px),radial-gradient(circle,transparent 54%,rgba(184,139,79,.06) 54.2%,transparent 54.6%); animation: orbit 32s linear infinite; }
 @keyframes orbit { to { rotate: 360deg; } }
 .hero .wrap { position: relative; z-index: 1; }
-.rings { position: absolute; z-index: 0; right: -6vw; top: 50%; width: min(58vw,700px); height: auto; transform: translateY(-50%) rotate(var(--rt,0deg)) scale(var(--sc,1)); pointer-events: none; overflow: visible; }
+.rings { position: absolute; z-index: 0; right: 12vw; top: 50%; width: min(52vw,600px); height: auto; transform: translateY(-50%) rotate(var(--rt,0deg)) scale(var(--sc,1)); pointer-events: none; overflow: visible; }
 .rings circle { fill: none; stroke: var(--gold); stroke-width: 1.4; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.6s cubic-bezier(.2,.7,.2,1); }
 .rings.on circle { stroke-dashoffset: 0; }
 .rings .core { fill: var(--gold); stroke: none; opacity: 0; transition: opacity 1s 2.4s; }
