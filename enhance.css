@@ -1,15 +1,17 @@
 /* FINTAGE animation layer: restored page and scene motion. */
 .prog { position: fixed; z-index: 50; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: 0 50%; }
-.hero:before, .hero:after { content: ""; position: absolute; pointer-events: none; }
-.hero:before { z-index: 0; right: 4%; top: 50%; transform: translateY(-53%); color: rgba(11,47,40,.035); font: clamp(220px,38vw,510px)/.8 "Playfair Display",Georgia,serif; }
+.hero:before, .hero:after, .hero2:before, .hero2:after { content: ""; position: absolute; pointer-events: none; }
+.hero:before, .hero2:before { z-index: 0; right: 4%; top: 50%; transform: translateY(-53%); color: rgba(11,47,40,.035); font: clamp(220px,38vw,510px)/.8 "Playfair Display",Georgia,serif; }
 .hero:after { z-index: 0; width: min(48vw,590px); aspect-ratio: 1; right: 3%; top: 50%; transform: translateY(-50%); border: 1px solid rgba(184,139,79,.28); border-radius: 50%; background: radial-gradient(circle at center,rgba(184,139,79,.09) 0 1px,transparent 2px),radial-gradient(circle,transparent 54%,rgba(184,139,79,.06) 54.2%,transparent 54.6%); animation: orbit 32s linear infinite; }
+.hero2:after { z-index: 0; width: min(42vw,520px); aspect-ratio: 1; right: 2%; top: 50%; transform: translateY(-50%); border: 1px solid rgba(184,139,79,.22); border-radius: 50%; background: radial-gradient(circle at center,rgba(184,139,79,.07) 0 1px,transparent 2px),radial-gradient(circle,transparent 56%,rgba(184,139,79,.05) 56.2%,transparent 56.6%); animation: orbit 40s linear infinite reverse; }
 @keyframes orbit { to { rotate: 360deg; } }
-.hero .wrap { position: relative; z-index: 1; }
-.rings { position: absolute; z-index: 0; right: 12vw; top: 50%; width: min(52vw,600px); height: auto; transform: translateY(-50%) rotate(var(--rt,0deg)) scale(var(--sc,1)); pointer-events: none; overflow: visible; }
+.hero .wrap, .hero2 .wrap { position: relative; z-index: 1; }
+.rings { position: absolute; z-index: 0; right: 12vw; top: 50%; width: min(52vw,600px); height: auto; transform: translateY(-50%) rotate(var(--rt,0deg)) scale(var(--sc,1)); pointer-events: none; overflow: visible; animation: idle-turn 70s linear infinite; }
 .rings circle { fill: none; stroke: var(--gold); stroke-width: 1.4; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.6s cubic-bezier(.2,.7,.2,1); }
 .rings.on circle { stroke-dashoffset: 0; }
 .rings .core { fill: var(--gold); stroke: none; opacity: 0; transition: opacity 1s 2.4s; }
 .rings.on .core { opacity: .8; }
+@keyframes idle-turn { to { rotate: 360deg; } }
 h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; }
 h1 .w > span { display: inline-block; transform: translateY(112%); animation: word-rise 1s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(.25s + var(--i)*.14s); }
 @keyframes word-rise { to { transform: none; } }
@@ -38,14 +40,22 @@ h1 .w > span { display: inline-block; transform: translateY(112%); animation: wo
 .band:before { left: -200px; top: -240px; }
 .band:after { right: -220px; bottom: -260px; animation-direction: reverse; }
 .band .wrap { position: relative; z-index: 1; }
+/* Constellation floating dots - subtle background particles */
+.constellation { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.constellation dot { position: absolute; border-radius: 50%; background: var(--gold); opacity: .5; animation: float-dot 8s ease-in-out infinite; }
+.constellation dot:nth-child(odd) { animation-direction: reverse; animation-duration: 10s; }
+@keyframes float-dot { 0%, 100% { transform: translate(0, 0) scale(1); opacity: .4; } 50% { transform: translate(20px, -30px) scale(1.2); opacity: .8; } }
+/* Line connections for constellation effect */
+.constellation line { position: absolute; border-top: 1px solid rgba(184,139,79,.25); transform-origin: 0 0; pointer-events: none; animation: pulse-line 4s ease-in-out infinite; }
+@keyframes pulse-line { 0%, 100% { opacity: .3; transform: scaleX(1); } 50% { opacity: .7; transform: scaleX(1.1); } }
 @media (max-width:780px) {
-  .hero:after { width: 84vw; right: -44vw; opacity: .6; }
-  .rings { right: -40vw; width: 100vw; opacity: .55; }
+  .hero:after, .hero2:after { width: 84vw; right: -44vw; opacity: .6; }
+  .rings { right: -40vw; width: 100vw; opacity: .35; }
   .scene { height: 150px; }
   .mq { margin-top: 28px; }
 }
 @media (prefers-reduced-motion:reduce) {
-  .hero:after, .rings, .view.on, .mq > div, .band:before, .band:after { animation: none !important; }
+  .hero:after, .hero2:after, .rings, .view.on, .mq > div, .band:before, .band:after, .constellation dot, .constellation line { animation: none !important; }
   .rings circle { stroke-dashoffset: 0; transition: none; }
   .rings .core { opacity: .8; }
   h1 .w > span { animation: none; transform: none; }

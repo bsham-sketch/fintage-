@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   ];
   const nodes=[[330,38],[485,24],[600,18],[715,24],[870,38],[365,210],[510,220],[690,220],[835,210]];
   return `<circle class="fd-halo" cx="600" cy="120" r="74"/><circle class="fd-core" cx="600" cy="120" r="25"/>`+
-   routes.map((path,i)=>`<path class="fd-route" pathLength="1" d="${path}" style="--i:${i}"/>`).join("")+
+   routes.map((path,i)=>`<path class="fd-route" pathLength="1" d="${path}" style="--i:${i}"/>`).join("")+ 
    nodes.map(([x,y],i)=>`<circle class="fd-node" cx="${x}" cy="${y}" r="7" style="--i:${i}"/>`).join("");
  };
  S.about=()=>{

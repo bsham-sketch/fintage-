@@ -1,13 +1,19 @@
 /* Page-specific animated artwork and the ambient FINTAGE network. */
-.hero:before, .hero:after { display: block; }
+.hero:before, .hero:after, .hero2:before, .hero2:after { display: block; }
 .hero:before { content: "F"; }
 .hero:after { filter: drop-shadow(0 0 3px rgba(184,139,79,.2)); }
+.hero2:after { filter: drop-shadow(0 0 3px rgba(184,139,79,.15)); }
 .hero2 { isolation: isolate; }
 .hero2 h1 { background: linear-gradient(100deg,#0B2F28 28%,#B88B4F 50%,#0B2F28 72%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: title-shine 8s linear infinite; }
 @keyframes title-shine { to { background-position: -260% 0; } }
 .rings { filter: drop-shadow(0 0 5px rgba(184,139,79,.3)); animation: idle-turn 70s linear infinite; }
 .rings circle { stroke: #B88B4F; stroke-width: 2; }
 @keyframes idle-turn { to { rotate: 360deg; } }
+/* Concentric circle ripple effect on right side - matches reference image */
+.ripple-ring { position: absolute; border: 1px solid rgba(184,139,79,.25); border-radius: 50%; animation: ripple-expand 6s ease-out infinite; pointer-events: none; }
+.ripple-ring:nth-child(2) { animation-delay: 1.5s; animation-duration: 7s; }
+.ripple-ring:nth-child(3) { animation-delay: 3s; animation-duration: 8s; }
+@keyframes ripple-expand { 0% { transform: scale(0.3); opacity: 0; } 40% { opacity: .6; } 100% { transform: scale(1.8); opacity: 0; } }
 .rule { box-shadow: 0 0 8px rgba(184,139,79,.3); }
 .scene { border-block: 1px solid #B88B4F; }
 .mq { background: var(--green); border-block: 1px solid #B88B4F; }
@@ -56,9 +62,10 @@ header { position: relative; z-index: 5; }
 .panel:hover:before { opacity: 1; }
 @media (max-width:780px) { .hero2 h1 { background-size: 320% 100%; } }
 @media (prefers-reduced-motion:reduce) {
-  .hero2 h1, .rings, .cb, .dr, .pu, .orb, .fl, .vl, .rp, .lf, .wv, .about-route, .about-traveler, .about-node, .about-ripple, .fd-route, .fd-node, .fd-halo, .fd-core { animation: none !important; }
+  .hero2 h1, .rings, .cb, .dr, .pu, .orb, .fl, .vl, .rp, .lf, .wv, .about-route, .about-traveler, .about-node, .about-ripple, .fd-route, .fd-node, .fd-halo, .fd-core, .ripple-ring { animation: none !important; }
   .about-route { stroke-dashoffset: 0; }
   .about-traveler { display: none; }
   .cb { transform: scaleY(1); opacity: 1; }
   .dr { stroke-dashoffset: 0; opacity: 1; }
+  .ripple-ring { animation: none; opacity: .3; }
 }
