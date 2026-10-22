@@ -28,7 +28,7 @@ nav .ct { padding: 7px 16px; border: 1px solid var(--green); color: var(--green)
 .view { display: none; }
 .view.on { display: block; }
 .eb { margin: 0 0 18px; color: var(--gold); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; }
-.hero { display: flex; min-height: min(62vh, 620px); align-items: center; padding: 48px 0; }
+.hero { display: flex; min-height: min(42vh, 440px); align-items: center; padding: 32px 0; }
 .hero2 { max-width: 980px; margin: 0 auto; padding: 72px 28px 36px; }
 h1 { max-width: 900px; font-size: clamp(36px, 5vw, 60px); line-height: 1.12; }
 h1.big { font-size: clamp(56px, 9vw, 100px); line-height: 1; letter-spacing: -.035em; }
@@ -39,10 +39,10 @@ h1.big { font-size: clamp(56px, 9vw, 100px); line-height: 1; letter-spacing: -.0
 .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .btn { display: inline-block; margin: 0; padding: 11px 22px; border: 1px solid var(--green); background: transparent; color: var(--green); cursor: pointer; font: 12px Lato, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
 .btn:hover { background: var(--green); color: var(--ivory); }
-.idea { padding-top: 64px; padding-bottom: 56px; }
+.idea { padding-top: 36px; padding-bottom: 32px; }
 .stmt { margin-bottom: 20px; font-size: clamp(27px, 3.5vw, 38px); line-height: 1.3; }
 .stmt.sm { font-size: clamp(21px, 2.6vw, 27px); }
-.sec { padding-top: 62px; padding-bottom: 18px; }
+.sec { padding-top: 36px; padding-bottom: 12px; }
 .sec h2 { max-width: 760px; margin-bottom: 14px; font-size: clamp(28px, 4vw, 46px); line-height: 1.2; }
 .grid { display: grid; gap: 0 28px; margin: 26px auto 54px; }
 .caps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -82,11 +82,11 @@ footer img { width: 260px; max-width: 80%; }
   #mb { display: block; }
   header nav { position: absolute; top: 100%; left: 0; right: 0; z-index: 5; display: none; flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; border-bottom: 1px solid var(--line); background: var(--ivory); }
   header nav.open { display: flex; }
-  .hero { min-height: 62vh; padding: 44px 0; }
+  .hero { min-height: min(48vh, 380px); padding: 28px 0; }
   .hero2 { padding: 52px 22px 24px; }
   .lead { font-size: 17px; }
-  .idea { padding-top: 42px; padding-bottom: 36px; }
-  .sec { padding-top: 42px; }
+  .idea { padding-top: 28px; padding-bottom: 24px; }
+  .sec { padding-top: 28px; }
   .caps, .caps.three, .three, .rail { grid-template-columns: 1fr; }
   .cell { padding: 20px 0; }
   .panel { padding: 22px 0; }
